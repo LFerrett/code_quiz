@@ -14,6 +14,15 @@ body {
   text-decoration: underline;
 }
 
+.navbar {
+  padding: 5px;
+}
+
+#scores-right {
+  float: right;
+  color: black;
+}
+
 p {
   font-family: 'Courier New', Courier, monospace;
   font-size: 18px;

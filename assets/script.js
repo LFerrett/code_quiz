@@ -56,9 +56,9 @@ var score = 0;
 var scoreArray = [];
 var timerInterval = false;
 
-// Creates a function to start the quiz with 60 seconds on the clock
+// Creates a function to start the quiz with 45 seconds on the clock
 function startQuiz() {
-  timerSecs = 60;
+  timerSecs = 45;
   timerDisplay.textContent = timerSecs;
   countdown();
   nextQuestion();
@@ -67,7 +67,7 @@ function startQuiz() {
 
 // Clicks to the next question if there are any left
 function nextQuestion() {
-  container.className = "results-page mt-5";
+  container.className = "results-page";
   title.textContent = "Question " + (currentQuestion + 1);
   title.setAttribute("class", "h2");
   text.textContent = questions[currentQuestion].title;
@@ -78,9 +78,7 @@ function nextQuestion() {
   );
 
   // Displays the answers 
-
   quizAnswers.style.display = "block";
-
   answerButtons[0].textContent = questions[currentQuestion].choices[0];
   answerButtons[1].textContent = questions[currentQuestion].choices[1];
   answerButtons[2].textContent = questions[currentQuestion].choices[2];
@@ -128,7 +126,7 @@ function checkAnswer(event) {
     } else if (currentQuestion === 5) {
       endGame();
     } else {
-      timerSecs -= 10;
+      timerSecs -= 5;
       nextQuestion();
     }
   }
@@ -177,7 +175,6 @@ function loadHighScore() {
 
   if (storedScores !== null) {
     scoreArray = storedScores;
-
     return scoreArray;
   }
 }
