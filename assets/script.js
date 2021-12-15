@@ -1,9 +1,9 @@
 // Declares global variables
 var navBar = document.querySelector("nav");
-var highscoresLink = document.getElementById("highscores-link");
 var container = document.getElementById("container");
-var timerDisplay = document.getElementById("timer");
+var highscoresLink = document.getElementById("highscores-link");
 var startButton = document.getElementById("start-button");
+var timerDisplay = document.getElementById("timer");
 var title = document.getElementById("title");
 var text = document.getElementById("text");
 var quizAnswers = document.getElementById("quiz-answers");
@@ -80,6 +80,7 @@ function nextQuestion() {
 
   // Displays the answers 
   quizAnswers.style.display = "block";
+  quizAnswers.style.fontWeight = "800";
   answerBtns[0].textContent = questions[currentQuestion].choices[0];
   answerBtns[1].textContent = questions[currentQuestion].choices[1];
   answerBtns[2].textContent = questions[currentQuestion].choices[2];
@@ -90,7 +91,7 @@ function nextQuestion() {
   }
 }
 
-// Function to check to see if the user chose the correct answer
+// Function to check to see if the user chose the correct answer, subtracts time for a wrong answer, and displays a message for the wrong or right answer
 function checkAnswer(event) {
   // console.log("User chose: " + event.target.textContent);
   // console.log("Correct answer: " + questions[currentQuestion].answer);
@@ -133,6 +134,7 @@ function checkAnswer(event) {
   }
 }
 
+// Finishes the game (if the time runs out or the questions are finished) displaying final score 
 function endGame() {
   quizAnswers.style.display = "none";
   container.className = "quiz-page mt-5";
@@ -148,12 +150,13 @@ function endGame() {
   if (timerSecs <= 0) {
     title.textContent = "Time's up!";
   } else {
-    title.textContent = "Finished!";
+    title.textContent = "Congratulations, you've finished";
   }
 
   submitBtn.addEventListener("click", storeScores);
 }
 
+// Stores the score and the initials of the user to local storage and displays them on the high score screen
 function storeScores(event) {
   event.preventDefault();
 
@@ -173,7 +176,6 @@ function storeScores(event) {
 
 function loadHighScore() {
   storedScores = JSON.parse(localStorage.getItem("score"));
-
   if (storedScores !== null) {
     scoreArray = storedScores;
     return scoreArray;
@@ -185,6 +187,7 @@ function showScores() {
     clearInterval(timerInterval);
   }
 
+  // creates the high score "page"
   container.className = "score-page";
   var ul = document.createElement("ul");
   var returnButton = document.createElement("button");
@@ -222,6 +225,7 @@ function showScores() {
   });
 }
 
+// timer
 function countdown() {
   timerInterval = setInterval(function () {
     timerSecs--;

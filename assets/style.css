@@ -5,6 +5,12 @@
 
 body {
   margin: auto;
+  background-image: url("../assets/images/background_repeat.png");
+  background-repeat: repeat-x; 
+}
+
+img {
+  align-items: center;
 }
 
 .h1 {
@@ -25,11 +31,11 @@ body {
 
 p {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 18px;
-  margin: 12px 0;
+  font-size: 24px;
+  font-weight: bolder;
+  line-height: 1.5;
+  margin: 42px 0;
 }
-
-
 
 #container {
   overflow: auto;
@@ -80,6 +86,7 @@ li {
   width: 100%;
   font-style: italic;
   color: rgb(196, 6, 101);
+  font-weight: bold;
   margin: 20px 0;
   padding-top: 10px;
   border-top: 2px solid rgb(70, 69, 69);
