@@ -107,8 +107,12 @@ outline: none;
 }
 
 @media screen and (max-width: 470px) {
+  img {
+    width: 400px;
+}
   #initials {
       display: block;
       margin: 15px 0;
   }
+  
 }
