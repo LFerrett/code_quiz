@@ -7,11 +7,11 @@ var startButton = document.getElementById("start-button");
 var title = document.getElementById("title");
 var text = document.getElementById("text");
 var quizAnswers = document.getElementById("quiz-answers");
-var answerButtons = document.getElementsByClassName("answer-button");
-var answerMessage = document.getElementById("answer-message");
+var answerBtns = document.getElementsByClassName("answer-button");
+var answerMsg = document.getElementById("answer-message");
 var inputField = document.getElementById("input-field");
 var initials = document.getElementById("initials");
-var submitButton = document.getElementById("submit-button");
+var submitBtn = document.getElementById("submit-button");
 
 // Creates an array of questions
 var questions = [
@@ -50,6 +50,7 @@ var questions = [
   },
 ];
 
+// Declares timer and score variables
 var timerSecs = 0;
 var currentQuestion = 0;
 var score = 0;
@@ -79,13 +80,13 @@ function nextQuestion() {
 
   // Displays the answers 
   quizAnswers.style.display = "block";
-  answerButtons[0].textContent = questions[currentQuestion].choices[0];
-  answerButtons[1].textContent = questions[currentQuestion].choices[1];
-  answerButtons[2].textContent = questions[currentQuestion].choices[2];
-  answerButtons[3].textContent = questions[currentQuestion].choices[3];
+  answerBtns[0].textContent = questions[currentQuestion].choices[0];
+  answerBtns[1].textContent = questions[currentQuestion].choices[1];
+  answerBtns[2].textContent = questions[currentQuestion].choices[2];
+  answerBtns[3].textContent = questions[currentQuestion].choices[3];
 
-  for (i = 0; i < answerButtons.length; i++) {
-    answerButtons[i].addEventListener("click", checkAnswer);
+  for (i = 0; i < answerBtns.length; i++) {
+    answerBtns[i].addEventListener("click", checkAnswer);
   }
 }
 
@@ -95,14 +96,14 @@ function checkAnswer(event) {
   // console.log("Correct answer: " + questions[currentQuestion].answer);
 
   if (event.target.textContent === questions[currentQuestion].answer) {
-    answerMessage.style.display = "block";
-    answerMessage.textContent = "That's correct!";
-    answerMessage.className = "answer-message";
+    answerMsg.style.display = "block";
+    answerMsg.textContent = "That's correct!";
+    answerMsg.className = "answer-message";
     currentQuestion++;
     score++;
 
     setTimeout(function () {
-      answerMessage.style.display = "none";
+      answerMsg.style.display = "none";
     }, 800);
 
     if (currentQuestion === questions.length) {
@@ -112,13 +113,13 @@ function checkAnswer(event) {
     }
   } else {
     currentQuestion++;
-    answerMessage.style.display = "block";
-    answerMessage.textContent = "Sorry, you're wrong!";
-    answerMessage.className = "answer-message";
+    answerMsg.style.display = "block";
+    answerMsg.textContent = "Sorry, you're wrong!";
+    answerMsg.className = "answer-message";
 
     setTimeout(function () {
-      answerMessage.style.display = "none";
-    }, 800);
+      answerMsg.style.display = "none";
+    }, 500);
 
     if (timerSecs < 10) {
       timerSecs -= 10;
@@ -150,7 +151,7 @@ function endGame() {
     title.textContent = "Finished!";
   }
 
-  submitButton.addEventListener("click", storeScores);
+  submitBtn.addEventListener("click", storeScores);
 }
 
 function storeScores(event) {
@@ -188,6 +189,7 @@ function showScores() {
   var ul = document.createElement("ul");
   var returnButton = document.createElement("button");
   var clearButton = document.createElement("button");
+  // returnButton.classList.add("btn btn-info");
   returnButton.textContent = "Go Back";
   clearButton.textContent = "Clear High Scores";
   container.appendChild(ul);

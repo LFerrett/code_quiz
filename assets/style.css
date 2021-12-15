@@ -29,19 +29,7 @@ p {
   margin: 12px 0;
 }
 
-button {
-  background:rgb(44, 33, 92);
-  color: white;
-  border: 2px solid navy;
-  border-radius: 5px;
-  padding: 2px 4px;
-  margin-right: 10px;
-  font-size: 26px;
-}
 
-button:hover {
-  background: rgb(101, 78, 122);
-}
 
 #container {
   overflow: auto;
